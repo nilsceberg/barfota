@@ -1,5 +1,6 @@
 body
 {
+	overflow: hidden;
 	>div
 	{
 		position: absolute;
@@ -7,7 +8,5 @@ body
 		height: 100%;
 		border: none; //1px dotted white;
 		box-sizing: border-box;
-		background-color: rgba(32, 32, 32, 0.9);
-		color: white;
 	}
 }
