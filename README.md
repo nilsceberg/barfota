@@ -119,6 +119,86 @@ These example files result in the bar configuration pictured above, aside from t
 a HiDPI screen and need to be adjusted for smaller screens.
 
 
+## Widgets
+When a widget is loaded, barfota first looks in `~/.config/barfota/widgets` and if the widget cannot be found there, it looks in `/path/to/barfota/app/widgets`. A widget is defined by its `layout.html`, `style.css` and `main.js`. The first two work in a similar way to the `layout.html` and `appearance.html` described above. `main.js` is a node module which should export a constructor.
+
+### Example widget: bspwm-workspaces
+
+**layout.html**:
+```html
+[&nbsp;<span>
+	<span class="workspace-indicator-block">&#9632;</span>
+	<span class="workspace-blocks">
+		<span>&#9632;</span><span>&#9632;</span><span>&#9632;</span><span>&#9632;</span><span>&#9632;</span><span>&#9632;</span><span>&#9632;</span><span>&#9632;</span><span>&#9632;</span><span>&#9632;</span>
+	</span>
+</span>&nbsp;]
+```
+
+**style.css**:
+```css
+#bspwm-workspaces
+{
+	font-size: 50px;
+}
+
+#bspwm-workspaces>span
+{
+	position: relative;
+}
+
+#bspwm-workspaces .workspace-blocks
+{
+	position: relative;
+	color: #cccccc;
+	opacity: 0.1;
+}
+
+#bspwm-workspaces .workspace-indicator-block
+{
+	position: absolute;
+}
+```
+
+**main.js**:
+```javascript
+var spawn = require("child_process").spawn;
+var $ = require("jquery");
+function execute(command, callback)
+
+
+function WorkspaceIndicator(element)
+{
+	this.element = element;
+	this.indicatorBlock = element.find(".workspace-indicator-block");
+
+	this.subscriber = spawn("bspc", ["control", "--subscribe"]);
+
+	var that = this;
+	this.subscriber.stdout.on('data', function (data) {
+		that.parseState(data);
+	});
+};
+
+WorkspaceIndicator.prototype.parseState = function(state)
+{
+	var tokens = state.toString().split(":");
+	for(i in tokens)
+	{
+		if(i > 0 && i < (tokens.length - 1) && tokens[i][0] == tokens[i][0].toUpperCase()) 
+			this.setWorkspace(i - 1);
+	}
+}
+
+WorkspaceIndicator.prototype.setWorkspace = function(index)
+{
+	this.indicatorBlock.stop();
+	this.indicatorBlock.animate({left: index * 25}, 200);
+};
+
+module.exports = WorkspaceIndicator
+```
+
+
 ## Included widgets
 The following widgets are included with barfota:
 * **clock**
