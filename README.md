@@ -115,7 +115,7 @@ body>div
 }
 ```
 
-These example files result in the bar configuration pictured above. Keep in mind that they're tailored to
+These example files result in the bar configuration pictured above, aside from the fact that the `bspwm-workspaces` widget is not included. Keep in mind that they're tailored to
 a HiDPI screen and need to be adjusted for smaller screens.
 
 
