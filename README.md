@@ -9,6 +9,7 @@ It is, as it were, *not lightweight*.
   * **normalize.css**
 * node.js modules:
   * **jquery**
+  * **extend**
 
 
 ## Usage
