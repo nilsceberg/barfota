@@ -40,11 +40,11 @@ Bar.prototype.loadJS = function(file, element)
 {
 	try
 	{
-		return new require(file)(element);
+		return new (require(file))(element);
 	}
 	catch(e)
 	{
-		console.error("Failed to load JS: " + file + ".js");
+		console.error("Failed to load JS: " + file + ".js: " + e);
 	}
 };
 
