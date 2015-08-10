@@ -51,7 +51,7 @@ Bar.prototype.loadJS = function(file, element)
 Bar.prototype.loadWidgets = function()
 {
 	var that = this;
-	this.element.children().each(function(index, element)
+	this.element.find(".widget").each(function(index, element)
 			{
 				console.log("Loading " + element.id);
 				that.loadWidget(element.id, $(element));
