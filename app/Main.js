@@ -1,20 +1,26 @@
-var app = require('app');  // Module to control application life.
-var BrowserWindow = require('browser-window');  // Module to create native browser window.
+var app = require("app");
+var BrowserWindow = require("browser-window");
+var fs = require("fs");
+var extend = require("extend");
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is GCed.
+// global variables
+var path = require('path');
+global.app_root = path.resolve(__dirname);
+global.config_dir = process.env.HOME + "/.config/barfota";
+
+// reference to main window
 var mainWindow = null;
 
-// Quit when all windows are closed.
+// quit when all windows are closed
 app.on('window-all-closed', function() {
 	app.quit();
 });
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
 app.on('ready', function() {
+	var config = JSON.parse(fs.readFileSync(config_dir + "/config.json", "utf8"));
+
 	mainWindow = new BrowserWindow(
-			{
+			extend({
 				width: (3200-30*2), 
 				height: 70,
 				x: 30,
@@ -23,10 +29,9 @@ app.on('ready', function() {
 				transparent: true,
 				frame: false,
 				resizable: false
-			});
+			}, config.window));
 	mainWindow.loadUrl('file://' + __dirname + '/index.html');
 
-	// Open the devtools.
 	//mainWindow.openDevTools({detach: true});
 
 	mainWindow.on('closed', function() {
