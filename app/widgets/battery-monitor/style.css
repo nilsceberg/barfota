@@ -1,0 +1,33 @@
+#battery-monitor
+{
+	font-size: 50px;
+}
+
+#battery-monitor .charge-blocks
+{
+	color: yellow;
+}
+
+#battery-monitor .charge-blocks>span:nth-child(-n+4)
+{
+	color: orange;
+}
+
+#battery-monitor .charge-blocks>span:nth-child(-n+2)
+{
+	color: red;
+}
+
+#battery-monitor .charge-blocks>span:nth-child(n+7)
+{
+	color: #80ff00;
+}
+
+#battery-monitor .charge-blocks>span:nth-child(n+9)
+{
+	color: #00ff00;
+}
+
+#battery-monitor .charge-blocks
+{
+}
