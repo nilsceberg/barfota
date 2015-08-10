@@ -2,7 +2,7 @@ var remote = require("remote");
 var $ = require("jquery");
 var fs = require("fs");
 
-app_root = remote.getGlobal("config_dir");
+app_root = remote.getGlobal("app_root");
 config_dir = remote.getGlobal("config_dir");
 
 function Bar()
@@ -62,7 +62,10 @@ Bar.prototype.loadWidget = function(name, element)
 {
 	var dir = config_dir + "/widgets/" + name;
 	if(!fs.existsSync(dir))
+	{
+		console.log("Looking in app directory for " + name + "...");
 		dir = app_root + "/widgets/" + name;
+	}
 
 	this.loadHTML(dir + "/layout.html", element);
 	this.loadCSS(dir + "/style.css");
