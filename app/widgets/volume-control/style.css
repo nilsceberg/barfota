@@ -1,0 +1,33 @@
+#volume-control
+{
+	font-size: 50px;
+}
+
+#volume-control .slider-blocks
+{
+	color: #6060cc;
+}
+
+#volume-control .slider-blocks>span:nth-child(-n+4)
+{
+	color: #9090cc;
+}
+
+#volume-control .slider-blocks>span:nth-child(-n+2)
+{
+	color: #cccccc;
+}
+
+#volume-control .slider-blocks>span:nth-child(n+7)
+{
+	color: #4040cc;
+}
+
+#volume-control .slider-blocks>span:nth-child(n+9)
+{
+	color: #3030cc;
+}
+
+#volume-control .slider-blocks
+{
+}

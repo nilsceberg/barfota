@@ -1,0 +1,33 @@
+#brightness-control
+{
+	font-size: 50px;
+}
+
+#brightness-control .slider-blocks
+{
+	color: #cccc60;
+}
+
+#brightness-control .slider-blocks>span:nth-child(n+7)
+{
+	color: #cccc90;
+}
+
+#brightness-control .slider-blocks>span:nth-child(n+9)
+{
+	color: #cccccc;
+}
+
+#brightness-control .slider-blocks>span:nth-child(-n+4)
+{
+	color: #cccc40;
+}
+
+#brightness-control .slider-blocks>span:nth-child(-n+2)
+{
+	color: #cccc30;
+}
+
+#brightness-control .slider-blocks
+{
+}

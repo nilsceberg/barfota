@@ -28,7 +28,7 @@ BatteryMonitor.prototype.update = function()
 			that.element.find(".charge-blocks").children().css("opacity",
 					function(index)
 					{
-						return (index >= blocks ? 0 : 1);
+						return (index >= blocks ? 0.1 : 1);
 					});
 		});
 };
