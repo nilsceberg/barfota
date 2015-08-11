@@ -10,11 +10,28 @@ function BrightnessControl(element)
 	this.element = element;
 	var that = this;
 
+	this.update();
 	this.element.find(".slider-blocks").children().mousedown(function(element)
 		{
-			that.setSlider((9 - $(element.target).index()) * 10 + 10);
+			that.setBrightness((9 - $(element.target).index()) * 10 + 10);
 		});
 };
+
+BrightnessControl.prototype.setBrightness = function(percent)
+{
+	exec("xbacklight -set " + percent);
+	this.setSlider(percent);
+}
+
+BrightnessControl.prototype.update = function()
+{
+	var that = this;
+	execute("xbacklight -get", function(brightness)
+		{
+			var percent = Number(brightness);
+			that.setSlider(percent);
+		});
+}
 
 BrightnessControl.prototype.setSlider = function(percent)
 {
