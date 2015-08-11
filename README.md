@@ -203,9 +203,9 @@ module.exports = WorkspaceIndicator
 ## Included widgets
 The following widgets are included with barfota:
 * **clock**
-* **brightness-control** (just a slider at the moment - doesn't do anything)
-* **volume-control** (swiftly hacked together - works sporadically)
-* **battery-monitor**
+* **brightness-control** (requires `xbacklight`)
+* **volume-control** (requires `amixer`; swiftly hacked together - works sporadically)
+* **battery-monitor** (requires `acpi`)
 
 
 ## License
