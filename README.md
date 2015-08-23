@@ -164,7 +164,6 @@ When a widget is loaded, barfota first looks for `~/.config/barfota/widgets/<nam
 ```javascript
 var spawn = require("child_process").spawn;
 var $ = require("jquery");
-function execute(command, callback)
 
 
 function WorkspaceIndicator(element)
