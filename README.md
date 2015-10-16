@@ -204,7 +204,7 @@ The following widgets are included with barfota:
 * **clock**
 * **brightness-control** (requires `xbacklight`)
 * **volume-control** (requires `amixer`; swiftly hacked together - works sporadically)
-* **battery-monitor** (requires `acpi`)
+* **battery-monitor** (requires `acpi` and `perl`)
 
 
 ## License

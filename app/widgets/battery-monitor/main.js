@@ -20,10 +20,20 @@ function BatteryMonitor(element)
 BatteryMonitor.prototype.update = function()
 {
 	var that = this;
-	execute("acpi -b | grep -oP '\\d+%' | grep -oP '\\d+'", function(battery_info)
+	execute(
+			"acpi -b | perl -pe  \"s/.+?(Disc|C)harging, ([0-9]+)%.+/\\1\\n\\2/\"",
+			function(battery_info)
 		{
-			var percent = Number(battery_info);
+			battery_info = battery_info.split("\n");
+			var percent = Number(battery_info[1]);
+			var status = battery_info[0];
 			var blocks = Math.round(percent / 10);
+
+			if(status == "C")
+				that.element.toggleClass("charging", true);
+			else
+				that.element.toggleClass("charging", false);
+			
 			that.element.find(".charge-percent>span").text(percent);
 			that.element.find(".charge-blocks").children().css("opacity",
 					function(index)

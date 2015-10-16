@@ -30,4 +30,26 @@
 
 #battery-monitor .charge-blocks
 {
+	transition: text-shadow 1s;
+}
+
+#battery-monitor.charging .charge-blocks
+{
+	text-shadow:
+		15px 15px 30px blue,
+		-15px 15px 30px blue,
+		15px -15px 30px blue,
+		-15px -15px 30px blue;
+	transition: text-shadow 1s;
+}
+
+#battery-monitor .charge-blocks>span
+{
+	transition: color 1s;
+}
+
+#battery-monitor.charging .charge-blocks>span
+{
+	color: #60aaff !important;
+	transition: color 1s;
 }
