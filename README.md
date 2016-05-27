@@ -13,7 +13,7 @@ It is, as it were, *not lightweight*.
 
 
 ## Usage
-Install bower if you haven't done so. When in the barfota directory, run `bower install normalize.css`. Then run barfota with `./run.sh`. To run from other directories, use `electron --enable-transparent-visuals /path/to/barfota/app`.
+Make sure Node and Bower are installed. When in the barfota directory, run `node install && bower install`. Then run barfota with `./barfota start`.
 
 
 ## Configuration
