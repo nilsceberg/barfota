@@ -37,12 +37,12 @@ app.on('ready', function() {
 			}, config.window));
 	mainWindow.loadUrl('file://' + __dirname + '/index.html');
 
-	mainWindow.openDevTools({detach: true});
-
 	mainWindow.on('closed', function() {
 		mainWindow = null;
 	});
 
 	global.controller.on("reload", () => { mainWindow.reload(); });
+	global.controller.on("dev", () =>
+			{ mainWindow.openDevTools({detach: true}); });
 });
 
