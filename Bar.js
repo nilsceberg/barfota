@@ -1,6 +1,7 @@
 var remote = require("remote");
 var $ = require("jquery");
 var fs = require("fs");
+var remote = require("remote");
 
 app_root = remote.getGlobal("app_root");
 config_dir = remote.getGlobal("config_dir");
@@ -9,10 +10,13 @@ function Bar()
 {
 	this.element = $("body>div");
 	
+	console.log("Loading bar...");
 	this.loadHTML(config_dir + "/layout.html");
 	this.loadCSS(config_dir + "/appearance.css");
+	console.log("Loading widgets...");
 	
 	this.loadWidgets();
+	console.log("Done.");
 }
 
 Bar.prototype.loadCSS = function(file)

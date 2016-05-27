@@ -1,0 +1,22 @@
+{
+  "name": "barfota",
+  "description": "Desktop bar for Electron.",
+  "main": "Main.js",
+  "authors": [
+    "Nils Ceberg <nils.ceberg@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Deoxyribonucleic/barfota",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/lib/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "normalize.css#~4.1.1"
+  }
+}

@@ -1,5 +1,5 @@
-var app = require("app");
-var BrowserWindow = require("browser-window");
+const app = require("app");
+const BrowserWindow = require("browser-window");
 var fs = require("fs");
 var extend = require("extend");
 

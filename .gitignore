@@ -1,6 +1,6 @@
 *.swp
 *.swo
 .sass-cache
-app/assets/stylesheets
-app/lib
-app/node_modules
+assets/stylesheets
+node_modules
+bower_components

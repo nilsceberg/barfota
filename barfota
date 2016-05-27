@@ -1,0 +1,21 @@
+#!/bin/bash
+
+CMD="$1"
+
+if [ -z "$CMD" ]; then
+	echo "A command needs to be specified."
+	exit 1
+fi
+
+cd "${BASH_SOURCE%/*}"
+
+case "$CMD" in
+	start)
+		node_modules/electron-prebuilt/dist/electron\
+			--enable-transparent-visuals --disable-gpu .
+		;;
+	*)
+		echo $(pwd)
+		;;
+esac
+		
