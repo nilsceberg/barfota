@@ -2,6 +2,8 @@
 
 CMD="$1"
 
+CTRL=14151
+
 if [ -z "$CMD" ]; then
 	echo "A command needs to be specified."
 	exit 1
@@ -12,10 +14,10 @@ cd "${BASH_SOURCE%/*}"
 case "$CMD" in
 	start)
 		node_modules/electron-prebuilt/dist/electron\
-			--enable-transparent-visuals --disable-gpu .
+			--enable-transparent-visuals --disable-gpu . $CTRL
 		;;
 	*)
-		echo $(pwd)
+		echo "$@" | nc -c localhost $CTRL
 		;;
 esac
 		

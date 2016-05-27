@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "Main.js",
   "dependencies": {
+    "carrier": "^0.3.0",
     "electron-prebuilt": "^0.34.0",
     "extend": "^3.0.0",
     "jquery": "^2.2.4"

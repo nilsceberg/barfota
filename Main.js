@@ -2,11 +2,16 @@ const app = require("app");
 const BrowserWindow = require("browser-window");
 var fs = require("fs");
 var extend = require("extend");
+var Controller = require("./Controller.js");
 
 // global variables
 var path = require('path');
 global.app_root = path.resolve(__dirname);
 global.config_dir = process.env.HOME + "/.config/barfota";
+
+if(Number(process.argv[process.argv.length - 1]))
+	global.controller =
+		new Controller(Number(process.argv[process.argv.length - 1]));
 
 // reference to main window
 var mainWindow = null;
@@ -32,9 +37,12 @@ app.on('ready', function() {
 			}, config.window));
 	mainWindow.loadUrl('file://' + __dirname + '/index.html');
 
-	//mainWindow.openDevTools({detach: true});
+	mainWindow.openDevTools({detach: true});
 
 	mainWindow.on('closed', function() {
 		mainWindow = null;
 	});
+
+	global.controller.on("reload", () => { mainWindow.reload(); });
 });
+
