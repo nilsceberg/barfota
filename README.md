@@ -121,7 +121,7 @@ a HiDPI screen and need to be adjusted for smaller screens.
 
 
 ## Widgets
-When a widget is loaded, barfota first looks for `~/.config/barfota/widgets/<name>` and if the widget cannot be found there, it looks for `/path/to/barfota/app/widgets/<name>`. A widget is defined by its `layout.html`, `style.css` and `main.js`. The first two work in a similar way to the `layout.html` and `appearance.html` described above. `main.js` is a node module which should export a constructor.
+When a widget is loaded, barfota first looks for `~/.config/barfota/widgets/<name>` and if the widget cannot be found there, it looks for `/path/to/barfota/widgets/<name>`. A widget is defined by its `layout.html`, `style.css` and `main.js`. The first two work in a similar way to the `layout.html` and `appearance.html` described above. `main.js` is a node module which should export a constructor.
 
 ### Example widget: bspwm-workspaces
 
