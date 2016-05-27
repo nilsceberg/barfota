@@ -13,7 +13,7 @@ It is, as it were, *not lightweight*.
 
 
 ## Usage
-Make sure Node and Bower are installed. When in the barfota directory, run `node install && bower install`. Then run barfota with `./barfota start`.
+Make sure Node and Bower are installed. When in the barfota directory, run `npm install && bower install`. Then run barfota with `./barfota start`.
 
 
 ## Configuration
