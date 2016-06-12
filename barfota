@@ -13,8 +13,7 @@ cd "${BASH_SOURCE%/*}"
 
 case "$CMD" in
 	start)
-		node_modules/electron-prebuilt/dist/electron\
-			--enable-transparent-visuals --disable-gpu . $CTRL
+		node_modules/electron-prebuilt/dist/electron . $CTRL
 		;;
 	*)
 		echo "$@" | nc -c localhost $CTRL
