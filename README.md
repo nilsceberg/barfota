@@ -121,7 +121,7 @@ a HiDPI screen and need to be adjusted for smaller screens.
 
 
 ## Widgets
-When a widget is loaded, barfota first looks for `~/.config/barfota/widgets/<name>` and if the widget cannot be found there, it looks for `/path/to/barfota/widgets/<name>`. A widget is defined by its `layout.html`, `style.css` and `main.js`. The first two work in a similar way to the `layout.html` and `appearance.html` described above. `main.js` is a node module which should export a constructor.
+When a widget is loaded, barfota first looks for `~/.config/barfota/widgets/<name>` and if the widget cannot be found there, it looks for `/path/to/barfota/widgets/<name>`. A widget is defined by its `layout.html`, `style.css` and `main.js`. The first two work in a similar way to the `layout.html` and `appearance.css` described above. `main.js` is a node module which should export a constructor.
 
 ### Example widget: bspwm-workspaces
 
@@ -162,16 +162,20 @@ When a widget is loaded, barfota first looks for `~/.config/barfota/widgets/<nam
 
 **main.js**:
 ```javascript
+var exec = require("child_process").exec;
 var spawn = require("child_process").spawn;
 var $ = require("jquery");
-
+function execute(command, callback)
+{
+	exec(command, function(error, stdout, stderr){ callback(stdout); });
+}
 
 function WorkspaceIndicator(element)
 {
 	this.element = element;
 	this.indicatorBlock = element.find(".workspace-indicator-block");
 
-	this.subscriber = spawn("bspc", ["control", "--subscribe"]);
+	this.subscriber = spawn("bspc", ["subscribe", "desktop"]);
 
 	var that = this;
 	this.subscriber.stdout.on('data', function (data) {
@@ -181,13 +185,10 @@ function WorkspaceIndicator(element)
 
 WorkspaceIndicator.prototype.parseState = function(state)
 {
-	var tokens = state.toString().split(":");
-	for(i in tokens)
-	{
-		if(i > 0 && i < (tokens.length - 1) && tokens[i][0] == tokens[i][0].toUpperCase()) 
-			this.setWorkspace(i - 1);
-	}
+	var workspaceIndex = Number(state.toString().split(" ").slice(-1)[0]) - 1;
+	this.setWorkspace(workspaceIndex);
 }
+
 
 WorkspaceIndicator.prototype.setWorkspace = function(index)
 {
@@ -195,7 +196,8 @@ WorkspaceIndicator.prototype.setWorkspace = function(index)
 	this.indicatorBlock.animate({left: index * 25}, 200);
 };
 
-module.exports = WorkspaceIndicator
+
+module.exports = WorkspaceIndicator;
 ```
 
 
