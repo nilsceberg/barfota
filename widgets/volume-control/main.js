@@ -38,11 +38,18 @@ VolumeControl.prototype.update = function()
 VolumeControl.prototype.setSlider = function(percent)
 {
 	var blocks = Math.round(percent / 10);
-	this.element.find(".slider-blocks").children().css("opacity",
+	this.element.find(".slider-blocks").children().toggleClass(
 			function(index)
 			{
-				return (index >= blocks ? 0.1 : 1);
-			});
+				return (index < blocks ?
+						"slider-unit" : "slider-unit-inactive");
+			}, true);
+	this.element.find(".slider-blocks").children().toggleClass(
+			function(index)
+			{
+				return (index < blocks ?
+						"slider-unit-inactive" : "slider-unit");
+			}, false);
 };
 
 

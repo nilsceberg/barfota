@@ -2,3 +2,10 @@
 {
 	content: "\25A0";
 }
+
+.slider-unit-inactive:before
+{
+	content: "\25A1";
+	opacity: 0.2;
+}
+
