@@ -35,11 +35,18 @@ BatteryMonitor.prototype.update = function()
 				that.element.toggleClass("charging", false);
 			
 			that.element.find(".charge-percent>span").text(percent);
-			that.element.find(".charge-blocks").children().css("opacity",
+			that.element.find(".charge-blocks").children().toggleClass(
 					function(index)
 					{
-						return (index >= blocks ? 0.1 : 1);
-					});
+						return (index < blocks ?
+								"slider-unit" : "slider-unit-inactive");
+					}, true);
+			that.element.find(".charge-blocks").children().toggleClass(
+					function(index)
+					{
+						return (index < blocks ?
+								"slider-unit-inactive" : "slider-unit");
+					}, false);
 		});
 };
 
